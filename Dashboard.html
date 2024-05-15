@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping App</title>
+    <link rel="shortcut icon" href="./logo.avif" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+<style>
+    i{
+        cursor: pointer;
+    }
+    #cartList li{
+        margin: 15px;
+    }
+    
+
+</style>
+</head>
+<body>
+    <nav class="nav border d-flex justify-content-around bg-info-subtle p-3">
+        <a href="./Dashboard.html"><img src="./logo.avif" alt="logo" width="25px" height="25px"></a>
+        <div class="right w-25 d-flex justify-content-between">
+            <i class="bi bi-person-fill" id="userToggle"></i>
+            <i class="bi bi-cart-check-fill" id="cartToggle"></i>
+        </div>
+        <span class="position-absolute bg-danger text-light border ps-1 pe-1 rounded-5" style="left: 81%;" id="cartCount">0</span>
+    </nav>
+
+    <main>
+        <div class="items d-flex flex-wrap justify-content-around" style="width: 90%; margin: auto;" id="items">
+            
+        </div>
+    </main>
+
+    <div id="user" class="border w-25 m-auto position-absolute flex-column align-items-center p-5" style="top: 45px; left: 35%; background-color: rgb(136, 177, 152); display: none;">
+        <div id="user-inside" class="text-center">
+        <p id="username">Name : <span id="name"></span></p>
+        <p id="email">E-mail : <span id="emailin"></span></p>
+        <button id="logOutButton" class="border bg-danger-subtle p-2 rounded-5">Log Out</button>
+        </div>
+    </div>
+
+    <div class="cart position-absolute w-100 border bg-black h-100" style="top: 50px; display: none;" id="cartHidden">
+        <ul type="none" id="cartList" class="">
+            
+        </ul>
+        <a href="./checkpout.html"><button class="btn btn-primary">checkout</button></a>
+    </div>
+    <script src="./home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        let user = document.getElementById('user')
+        let userToggle = document.getElementById('userToggle')
+        // console.log(userToggle);
+        userToggle.onclick = ()=>{
+            console.log('hello');
+            let user = document.getElementById('user')
+            let res = userToggle.classList.toggle('true')
+            if(res){
+                user.style.display = 'flex'
+            }
+            else{
+                user.style.display = 'none'
+            }
+        }
+        let pname = document.getElementById('name')
+        let name = localStorage.getItem('name')
+        pname.innerText = name
+        let pemail = document.getElementById('emailin')
+        let email = localStorage.getItem('mail')
+        pemail.innerText = email
+        // console.log(name);
+        
+        // console.log(email);
+        let logout = document.getElementById('logOutButton')
+        logout.onclick = ()=>{
+            window.open('main.html')
+        }
+        let cartToggle = document.getElementById('cartToggle')
+        cartToggle.onclick = ()=>{
+            console.log('helo');
+            let cart = document.getElementById('cartHidden')
+            let res = cart.classList.toggle('true')
+            if(res){
+                cart.style.display = 'block'
+            }
+            else{
+                cart.style.display = 'none'
+            }
+        }
+        
+    </script>
+</body>
+</html>

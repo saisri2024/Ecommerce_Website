@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="./login.css">
+</head>
+<body id="bd">
+  
+  <h1 id="h1">Welcome to Login Page</h1>
+  <div id="d1">
+   
+  <form id="login-form">
+    <h2>Login</h2>
+    <div class="input-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+    </div>
+    <div class="input-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" required>
+    </div>
+    <button class="sign" type="submit">Login</button> 
+
+    <button class="sign"><a href="./signUp.html" id="up">signup</a></button>
+
+  </form>
+</div>
+
+  
+
+  <script>
+
+    let s=document.getElementById("sign")
+    let bd=document.getElementById("bd")
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      const storedUserData = JSON.parse(localStorage.getItem('user'));
+      // if (storedUserData && storedUserData.email === email && storedUserData.password === password) {
+        if ( storedUserData.email === email && storedUserData.password === password) {
+
+        alert('Login successful! Redirecting to Dashboard.'); 
+        window.open('./Dashboard.html')
+
+       
+      } else {
+        // if (!storedUserData || storedUserData.email !== email) {
+          if (storedUserData.email !== email) {
+
+          alert('Email not found');
+        } else {
+          alert('Please enter correct password');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
